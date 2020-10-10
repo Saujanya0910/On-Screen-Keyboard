@@ -40,12 +40,20 @@ for button in buttons:
         tk.Button(keyboardApp,
         text = button, 
         width = 5,
+        padx = 3,
+        pady = 3, 
+        bd = 12,
+        font=('arial', 12, 'bold'),
         command = cmd).grid(row = varRow, column = varCol)
 
     if button == ' Space ':
         tk.Button(keyboardApp, 
         text = button,
-        width = 5, 
+        width = 118, 
+        padx = 3,
+        pady = 3, 
+        bd = 12,
+        font=('arial', 12, 'bold'),
         command = cmd).grid(row = 6, column = varCol)
 
     varCol += 1
