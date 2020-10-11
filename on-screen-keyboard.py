@@ -31,7 +31,7 @@ buttons = [
     ' Space ' 
 ]
 
-varRow = 2
+varRow = 3
 varCol = 0
 
 for button in buttons:
@@ -40,6 +40,11 @@ for button in buttons:
         tk.Button(keyboardApp,
         text = button, 
         width = 5,
+        bg = 'powder blue',
+        fg = '#000000',
+        activebackground = '#ffffff',
+        activeforeground = '#000990',
+        relief = 'raised',
         padx = 3,
         pady = 3, 
         bd = 12,
@@ -50,18 +55,23 @@ for button in buttons:
         tk.Button(keyboardApp, 
         text = button,
         width = 118, 
+        bg = 'powder blue',
+        fg = '#000000',
+        activebackground = '#ffffff',
+        activeforeground = '#000990',
+        relief = 'raised',
         padx = 3,
         pady = 3, 
         bd = 12,
         font=('arial', 12, 'bold'),
-        command = cmd).grid(row = 6, column = varCol)
+        command = cmd).grid(row = 6, columnspan = 16)
 
     varCol += 1
-    if varCol > 15 and varRow == 2:
+    if varCol > 15 and varRow == 3:
         varCol = 0
         varRow += 1 
 
-    if varCol > 15 and varRow == 3:
+    if varCol > 15 and varRow == 4:
         varCol = 0
         varRow += 1 
 
