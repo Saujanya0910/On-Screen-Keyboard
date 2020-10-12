@@ -1,14 +1,8 @@
-# for python2
-try:
-    import TKinter as tk
-except ImportError:
-    import tkinter as tk
-
-from functools import partial
-
 # import tkinter library with an alias
 from tkinter import *
 import tkinter as tk
+
+from functools import partial
 
 # initialise the tkinter app
 keyboardApp = tk.Tk()
@@ -61,8 +55,8 @@ def backspace():
     
 # function for button click
 def buttonClick(input):
-    if input == 'Space':
-        textBox.insert(INSERT, ' ')
+    if input == ' Space ':
+        textBox.insert(INSERT,' ')
     elif input == 'Tab':
         textBox.insert(INSERT, '    ')
     elif input == 'Tab':
@@ -97,7 +91,7 @@ for button in buttons:
     if button == ' Space ':
         tk.Button(keyboardApp, 
             text = button,
-            width = 70, 
+            width = 50, 
             bg = 'black',
             fg = 'white',
             activebackground = '#ffffff',
