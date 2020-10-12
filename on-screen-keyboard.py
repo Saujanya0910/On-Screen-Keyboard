@@ -12,13 +12,11 @@ import tkinter as tk
 
 # initialise the tkinter app
 keyboardApp = tk.Tk()
-
 # title 
 keyboardApp.title("On-Screen Keyboard")
-# keyboardApp.wm_iconbitmap('/images/keyboard_5643.ico')
-# img = PhotoImage(file = 'images/keyboard_5643.ico')
-# keyboardApp.tk.call('wm', 'iconphoto', keyboardApp._w, img)
-# keyboardApp ['bg'] = 'powder blue'
+# icon
+keyboardApp.wm_iconbitmap('on-screen-keyboard\images\keyboard_5643.ico')
+# background
 keyboardApp.config(bg='powder blue')
 # disable resizeable property
 keyboardApp.resizable(0, 0)
@@ -29,17 +27,18 @@ label1 = Label(keyboardApp, text = 'On-screen Keyboard',
                bg = 'powder blue',
                fg = '#000000')
                
-# form the heading
+# create the heading
 label1.grid(row = 0, columnspan = 40)
 
 # text box 
 textBox = Text(keyboardApp, 
-                width = 138, 
+                width = 180, 
                 font = ('arial', 10, 'bold'),
                 wrap = WORD)
 
-# form the textbox
+# create the textbox and focus
 textBox.grid(row = 1, columnspan = 40)
+textBox.focus()
 
 # buttons list
 buttons = [
@@ -53,20 +52,26 @@ buttons = [
 varRow = 3
 varCol = 0
 
-# define the click function
+# function for backspace
+def backspace():
+    text = textBox.get('1.0', 'end-1c')
+    text = text[:-1]
+    textBox.delete('1.0', INSERT)
+    textBox.insert('1.0', text)
+    
+# function for button click
 def buttonClick(input):
     if input == 'Space':
-        textBox.insert(tk.END, ' ')
+        textBox.insert(INSERT, ' ')
     elif input == 'Tab':
-        textBox.insert(tk.END, '    ')
+        textBox.insert(INSERT, '    ')
     elif input == 'Tab':
         textBox.insert(INSERT, '    ')
     elif input == '<-':
-        end = tk.END
-        textBox.delete(end-1,end)
+        backspace()
     else:
         if input != 'Shift':
-            textBox.insert(tk.END, input)
+            textBox.insert(INSERT, input)
 
 for button in buttons:
     # command to run on every button click - buttonClick() function 
@@ -75,34 +80,34 @@ for button in buttons:
     # for every button except 'space'
     if button != ' Space ':
         tk.Button(keyboardApp,
-        text = button, 
-        width = 5,
-        bg = 'powder blue',
-        fg = '#000000',
-        activebackground = '#000000',
-        activeforeground = '#ffffff',
-        relief = 'raised',
-        padx = 3,
-        pady = 3, 
-        bd = 5,
-        font=('arial', 12, 'bold'),
-        command = cmd).grid(row = varRow, column = varCol)
+            text = button, 
+            width = 7,
+            bg = 'black',
+            fg = 'white',
+            activebackground = '#ffffff',
+            activeforeground = '#000990',
+            relief = 'raised',
+            padx = 3,
+            pady = 3, 
+            bd = 5,
+            font=('arial', 12, 'bold'),
+            command = cmd).grid(row = varRow, column = varCol)
 
     # for the space button
     if button == ' Space ':
         tk.Button(keyboardApp, 
-        text = button,
-        width = 118, 
-        bg = 'powder blue',
-        fg = '#000000',
-        activebackground = '#ffffff',
-        activeforeground = '#000990',
-        relief = 'raised',
-        padx = 3,
-        pady = 3, 
-        bd = 12,
-        font=('arial', 12, 'bold'),
-        command = cmd).grid(row = 6, columnspan = 16)
+            text = button,
+            width = 70, 
+            bg = 'black',
+            fg = 'white',
+            activebackground = '#ffffff',
+            activeforeground = '#000990',
+            relief = 'raised',
+            padx = 3,
+            pady = 3, 
+            bd = 12,
+            font=('arial', 12, 'bold'),
+            command = cmd).grid(row = 6, columnspan = 16)
 
     # go to next column for every different button
     varCol += 1
