@@ -12,6 +12,7 @@ import tkinter as tk
 
 # initialise the tkinter app
 keyboardApp = tk.Tk()
+
 # title 
 keyboardApp.title("On-Screen Keyboard")
 # keyboardApp.wm_iconbitmap('/images/keyboard_5643.ico')
@@ -32,8 +33,10 @@ label1 = Label(keyboardApp, text = 'On-screen Keyboard',
 label1.grid(row = 0, columnspan = 40)
 
 # text box 
-textBox = Text(keyboardApp, width = 138, font = (
-    'arial', 10, 'bold'))
+textBox = Text(keyboardApp, 
+                width = 138, 
+                font = ('arial', 10, 'bold'),
+                wrap = WORD)
 
 # form the textbox
 textBox.grid(row = 1, columnspan = 40)
@@ -42,7 +45,7 @@ textBox.grid(row = 1, columnspan = 40)
 buttons = [
     '!', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '<-', '7', '8', '9', '-',
     'Tab', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', '[', ']', '4', '5', '6', '+',
-    'SHIFT', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', '?', 'SHIFT', '1', '2', '3',
+    'Shift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', '?', 'Shift', '1', '2', '3',
     ' Space ' 
 ]
 
@@ -50,9 +53,24 @@ buttons = [
 varRow = 3
 varCol = 0
 
+# define the click function
+def buttonClick(input):
+    if input == 'Space':
+        textBox.insert(tk.END, ' ')
+    elif input == 'Tab':
+        textBox.insert(tk.END, '    ')
+    elif input == 'Tab':
+        textBox.insert(INSERT, '    ')
+    elif input == '<-':
+        end = tk.END
+        textBox.delete(end-1,end)
+    else:
+        if input != 'Shift':
+            textBox.insert(tk.END, input)
+
 for button in buttons:
-    # command to run on every button click - select() function 
-    cmd = lambda x = button: select(x)
+    # command to run on every button click - buttonClick() function 
+    cmd = lambda x = button: buttonClick(x)
 
     # for every button except 'space'
     if button != ' Space ':
@@ -61,12 +79,12 @@ for button in buttons:
         width = 5,
         bg = 'powder blue',
         fg = '#000000',
-        activebackground = '#ffffff',
-        activeforeground = '#000990',
+        activebackground = '#000000',
+        activeforeground = '#ffffff',
         relief = 'raised',
         padx = 3,
         pady = 3, 
-        bd = 12,
+        bd = 5,
         font=('arial', 12, 'bold'),
         command = cmd).grid(row = varRow, column = varCol)
 
