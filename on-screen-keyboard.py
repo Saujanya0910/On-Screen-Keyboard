@@ -4,18 +4,13 @@ import tkinter as tk
 
 from functools import partial
 
-# initialise the tkinter app
-keyboardApp = tk.Tk()
-# title 
-keyboardApp.title("On-Screen Keyboard")
-# icon
-keyboardApp.wm_iconbitmap('on-screen-keyboard\images\keyboard_5643.ico')
-# background
-keyboardApp.config(bg='powder blue')
-# disable resizeable property
-keyboardApp.resizable(0, 0)
+keyboardApp = tk.Tk()   # initialise the tkinter app
+keyboardApp.title("On-Screen Keyboard")     # title 
+keyboardApp.wm_iconbitmap('on-screen-keyboard\images\keyboard_5643.ico')       # icon
+keyboardApp.config(bg='powder blue')    # background
+keyboardApp.resizable(0, 0)     # disable resizeable property
 
-# give a heading for the app
+# heading for the app
 label1 = Label(keyboardApp, text = 'On-screen Keyboard',
                font=('arial', 30, 'bold'),
                bg = 'powder blue',
@@ -38,9 +33,17 @@ textBox.focus()
 buttons = [
     '!', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '←', '7', '8', '9', '-',
     'Tab', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', '[', ']', '4', '5', '6', '+',
-    'Shift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', '?', 'Shift', '1', '2', '3',
+    'Shift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', '?', '*', '1', '2', '3',
     ' Space ' 
 ]
+
+# shift button list (not yet working)
+# shift_buttons = [
+#     '!', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '←', '7', '8', '9', '-',
+#     'Tab', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', '[', ']', '4', '5', '6', '+',
+#     'Shift', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', ',', '.', '/', '?', '*', '1', '2', '3',
+#     ' Space ' 
+# ]
 
 # initialise row, col for buttons
 varRow = 3
@@ -59,7 +62,7 @@ def buttonClick(input):
         textBox.insert(INSERT,' ')
     elif input == 'Tab':
         textBox.insert(INSERT, '    ')
-    elif input == '<-':
+    elif input == '←':
         backspace()
     else:
         if input != 'Shift':
@@ -104,7 +107,7 @@ for button in buttons:
     # go to next column for every different button
     varCol += 1
 
-    # if number of buttons in one line crosses 15
+    # if number of buttons in one line crosses 15, go to next row and 0th col
     if varCol > 15 and varRow == 3:
         varCol = 0
         varRow += 1 
