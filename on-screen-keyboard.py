@@ -52,7 +52,11 @@ def backspace():
     text = text[:-1]
     textBox.delete('1.0', INSERT)
     textBox.insert('1.0', text)
-    
+
+def shift():
+    while input == 'Shift':
+        tk.Button(keyboardApp, relief = 'raised')
+
 # function for button click
 def buttonClick(input):
     if input == ' Space ':
@@ -66,6 +70,8 @@ def buttonClick(input):
     else:
         if input != 'Shift':
             textBox.insert(INSERT, input)
+        else:
+            shift()
 
 for button in buttons:
     # command to run on every button click - buttonClick() function 
@@ -78,8 +84,8 @@ for button in buttons:
             width = 7,
             bg = 'black',
             fg = 'white',
-            activebackground = '#ffffff',
-            activeforeground = '#000990',
+            activebackground = 'white',
+            activeforeground = 'black',
             relief = 'raised',
             padx = 3,
             pady = 3, 
@@ -94,8 +100,8 @@ for button in buttons:
             width = 50, 
             bg = 'black',
             fg = 'white',
-            activebackground = '#ffffff',
-            activeforeground = '#000990',
+            activebackground = 'white',
+            activeforeground = 'black',
             relief = 'raised',
             padx = 3,
             pady = 3, 
