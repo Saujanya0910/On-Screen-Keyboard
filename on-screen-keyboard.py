@@ -36,7 +36,7 @@ textBox.focus()
 
 # buttons list
 buttons = [
-    '!', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '<-', '7', '8', '9', '-',
+    '!', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '←', '7', '8', '9', '-',
     'Tab', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', '[', ']', '4', '5', '6', '+',
     'Shift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', '?', 'Shift', '1', '2', '3',
     ' Space ' 
@@ -53,16 +53,10 @@ def backspace():
     textBox.delete('1.0', INSERT)
     textBox.insert('1.0', text)
 
-def shift():
-    while input == 'Shift':
-        tk.Button(keyboardApp, relief = 'raised')
-
 # function for button click
 def buttonClick(input):
     if input == ' Space ':
         textBox.insert(INSERT,' ')
-    elif input == 'Tab':
-        textBox.insert(INSERT, '    ')
     elif input == 'Tab':
         textBox.insert(INSERT, '    ')
     elif input == '<-':
@@ -70,8 +64,6 @@ def buttonClick(input):
     else:
         if input != 'Shift':
             textBox.insert(INSERT, input)
-        else:
-            shift()
 
 for button in buttons:
     # command to run on every button click - buttonClick() function 
