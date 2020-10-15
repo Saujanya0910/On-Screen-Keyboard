@@ -37,17 +37,42 @@ buttons = [
     ' Space ' 
 ]
 
-# shift button list (not yet working)
-# shift_buttons = [
-#     '!', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '←', '7', '8', '9', '-',
-#     'Tab', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', '[', ']', '4', '5', '6', '+',
-#     'Shift', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', ',', '.', '/', '?', '*', '1', '2', '3',
-#     ' Space ' 
-# ]
-
 # initialise row, col for buttons
 varRow = 3
 varCol = 0
+
+# toggle shift button press
+shift_on = False
+# save references of letter buttons
+letter_buttons = []
+
+# check if the button corresponds to a letter
+def is_letter(s):
+    return len(s) == 1 and 'a' <= s <= 'z'
+
+# function for button click
+def buttonClick(input):
+    global shift_on
+
+    if input == 'Shift':
+        # toggle shift status
+        shift_on = not shift_on
+        # update text of letter buttons according to status of shift btn
+        for btn in letter_buttons:
+            text = btn['text']
+            btn['text'] = text.upper() if shift_on else text.lower()
+    else:
+        if input == ' Space ':
+            textBox.insert(INSERT,' ')
+        elif input == 'Tab':
+            textBox.insert(INSERT, '    ')
+        elif input == '←':
+            backspace()
+        else:
+            # update text of letter buttons
+            if is_letter(input):
+                input = input.upper() if shift_on else input.lower()
+            textBox.insert(INSERT, input)
 
 # function for backspace
 def backspace():
@@ -55,18 +80,7 @@ def backspace():
     text = text[:-1]
     textBox.delete('1.0', INSERT)
     textBox.insert('1.0', text)
-
-# function for button click
-def buttonClick(input):
-    if input == ' Space ':
-        textBox.insert(INSERT,' ')
-    elif input == 'Tab':
-        textBox.insert(INSERT, '    ')
-    elif input == '←':
-        backspace()
-    else:
-        if input != 'Shift':
-            textBox.insert(INSERT, input)
+    # textBox.delete('insert-1chars', INSERT)
 
 for button in buttons:
     # command to run on every button click - buttonClick() function 
@@ -74,7 +88,7 @@ for button in buttons:
 
     # for every button except 'space'
     if button != ' Space ':
-        tk.Button(keyboardApp,
+        btn = tk.Button(keyboardApp,
             text = button, 
             width = 7,
             bg = 'black',
@@ -86,7 +100,11 @@ for button in buttons:
             pady = 3, 
             bd = 5,
             font=('arial', 12, 'bold'),
-            command = cmd).grid(row = varRow, column = varCol)
+            command = cmd)
+        btn.grid(row = varRow, column = varCol)
+        # save reference of letter buttons
+        if is_letter(button):
+            letter_buttons.append(btn)
 
     # for the space button
     if button == ' Space ':
