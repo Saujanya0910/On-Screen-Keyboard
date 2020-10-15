@@ -6,7 +6,7 @@ from functools import partial
 
 keyboardApp = tk.Tk()   # initialise the tkinter app
 keyboardApp.title("On-Screen Keyboard")     # title 
-keyboardApp.wm_iconbitmap('on-screen-keyboard\images\keyboard_5643.ico')       # icon
+keyboardApp.wm_iconbitmap('On-Screen-Keyboard\images\keyboard_5643.ico')       # icon - ADD YOUR RELATIVE PATH IF ICON DOESN'T LOAD
 keyboardApp.config(bg='powder blue')    # background
 keyboardApp.resizable(0, 0)     # disable resizeable property
 
@@ -33,7 +33,7 @@ textBox.focus()
 buttons = [
     '!', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '←', '7', '8', '9', '-',
     'Tab', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', '[', ']', '4', '5', '6', '+',
-    'Shift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', '?', '*', '1', '2', '3',
+    'Shift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', '?', '1', '2', '3', '*',
     ' Space ' 
 ]
 
