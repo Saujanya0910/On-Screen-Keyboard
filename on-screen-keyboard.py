@@ -5,8 +5,7 @@ import tkinter as tk
 from functools import partial
 
 keyboardApp = tk.Tk()   # initialise the tkinter app
-keyboardApp.title("On-Screen Keyboard")     # title 
-keyboardApp.wm_iconbitmap('on-screen-keyboard\images\keyboard_5643.ico')       # icon
+keyboardApp.title("On-Screen Keyboard")     # title
 keyboardApp.config(bg='powder blue')    # background
 keyboardApp.resizable(0, 0)     # disable resizeable property
 
