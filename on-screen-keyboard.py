@@ -76,11 +76,7 @@ def buttonClick(input):
 
 # function for backspace
 def backspace():
-    text = textBox.get('1.0', 'end-1c')
-    text = text[:-1]
-    textBox.delete('1.0', INSERT)
-    textBox.insert('1.0', text)
-    # textBox.delete('insert-1chars', INSERT)
+    textBox.delete('insert-1chars', INSERT)
 
 for button in buttons:
     # command to run on every button click - buttonClick() function 
