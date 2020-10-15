@@ -20,3 +20,8 @@ Python 3.x
      OR
     
 * Run the `on-screen-keyboard.exe` file (might require a wait of 5-10 seconds)
+
+## Screenshots:
+<img src='screenshots/screenshot1.JPG' alt='screenshots/screenshot1.JPG' width='850'>
+<img src='screenshots/screenshot2.JPG' alt='screenshots/screenshot2.JPG' width='950'>
+<img src='screenshots/screenshot3.JPG' alt='screenshots/screenshot3.JPG' width='950'>
